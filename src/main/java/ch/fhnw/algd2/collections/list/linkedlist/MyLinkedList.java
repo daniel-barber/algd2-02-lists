@@ -51,6 +51,7 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
     @Override
     public boolean contains(Object o) {
         // TODO implement this operation (part B)
+
         throw new UnsupportedOperationException();
     }
 
