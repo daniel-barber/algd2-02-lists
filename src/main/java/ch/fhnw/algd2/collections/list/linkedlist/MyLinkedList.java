@@ -7,6 +7,7 @@ import ch.fhnw.algd2.collections.list.MyAbstractList;
 public class MyLinkedList<E> extends MyAbstractList<E> {
     private int size = 0;
     private Node<E> first;
+    private Node<E> last;
 
     public static void main(String[] args) {
         MyLinkedList<Integer> list = new MyLinkedList<>();
@@ -21,17 +22,25 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
         // done implement this operation (part A)
         // if first not empty, search through nodes until node does not have next
         if (first != null) {
-            Node<E> n = first;
+
+        last.next = new Node<>(e);
+        last = last.next;
+
+        // alte Implementierung ohne last
+/*            Node<E> n = first;
             while (n.next != null) {
                 n = n.next;
             }
+
         // create next node
             n.next = new Node<>(e);
+            last = n.next;*/
         }
 
         // else fill first node
         else {
             first = new Node<>(e);
+            last = first;
         }
 
         // increment size
