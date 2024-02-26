@@ -5,81 +5,102 @@ import java.util.Arrays;
 import ch.fhnw.algd2.collections.list.MyAbstractList;
 
 public class MyLinkedList<E> extends MyAbstractList<E> {
-	private int size = 0;
-	private Node<E> first;
+    private int size = 0;
+    private Node<E> first;
 
-	@Override
-	public boolean add(E e) {
-		// TODO implement this operation (part A)
-		throw new UnsupportedOperationException();
-	}
+    public static void main(String[] args) {
+        MyLinkedList<Integer> list = new MyLinkedList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        System.out.println(Arrays.toString(list.toArray()));
+    }
 
-	@Override
-	public boolean contains(Object o) {
-		// TODO implement this operation (part B)
-		throw new UnsupportedOperationException();
-	}
+    @Override
+    public boolean add(E e) {
+        // done implement this operation (part A)
+        // if first not empty, search through nodes until node does not have next
+        if (first != null) {
+            Node<E> n = first;
+            while (n.next != null) {
+                n = n.next;
+            }
+        // create next node
+            n.next = new Node<>(e);
+        }
 
-	@Override
-	public boolean remove(Object o) {
-		// TODO implement this operation (part C)
-		throw new UnsupportedOperationException();
-	}
+        // else fill first node
+        else {
+            first = new Node<>(e);
+        }
 
-	@Override
-	public E get(int index) {
-		// TODO implement this operation (part D)
-		throw new UnsupportedOperationException();
-	}
+        // increment size
+        size++;
+        return true;
+    }
 
-	@Override
-	public void add(int index, E element) {
-		// TODO implement this operation (part D)
-		throw new UnsupportedOperationException();
-	}
+    @Override
+    public boolean contains(Object o) {
+        // TODO implement this operation (part B)
+        throw new UnsupportedOperationException();
+    }
 
-	@Override
-	public E remove(int index) {
-		// TODO implement this operation (part D)
-		throw new UnsupportedOperationException();
-	}
+    @Override
+    public boolean remove(Object o) {
+        // TODO implement this operation (part C)
+        throw new UnsupportedOperationException();
+    }
 
-	@Override
-	public Object[] toArray() {
-		Object[] array = new Object[size];
-		int index = 0;
-		Node<E> current = first;
-		while (current != null) {
-			array[index++] = current.elem;
-			current = current.next;
-		}
-		return array;
-	}
+    @Override
+    public E get(int index) {
+        // TODO implement this operation (part D)
+        throw new UnsupportedOperationException();
+    }
 
-	@Override
-	public int size() {
-		return size;
-	}
+    @Override
+    public void add(int index, E element) {
+        // TODO implement this operation (part D)
+        throw new UnsupportedOperationException();
+    }
 
-	private static class Node<E> {
-		private final E elem;
-		private Node<E> next;
+    @Override
+    public E remove(int index) {
+        // TODO implement this operation (part D)
+        throw new UnsupportedOperationException();
+    }
 
-		private Node(E elem) {
-			this.elem = elem;
-		}
+    @Override
+    public Object[] toArray() {
+        Object[] array = new Object[size];
+        int index = 0;
+        Node<E> current = first;
+        while (current != null) {
+            array[index++] = current.elem;
+            current = current.next;
+        }
+        return array;
+    }
 
-		private Node(E elem, Node<E> next) {
-			this.elem = elem;
-			this.next = next;
-		}
-	}
+    @Override
+    public int size() {
+        return size;
+    }
 
-	public static void main(String[] args) {
-		MyLinkedList<Integer> list = new MyLinkedList<>();
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		System.out.println(Arrays.toString(list.toArray()));
-	}
+    private static class Node<E> {
+        private final E elem;
+        private Node<E> next;
+
+        private Node(E elem) {
+            this.elem = elem;
+        }
+
+        private Node(E elem, Node<E> next) {
+            this.elem = elem;
+            this.next = next;
+        }
+
+        public boolean hasNext() {
+            return this.next != null;
+        }
+    }
 }
