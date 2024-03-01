@@ -50,7 +50,7 @@ public class MyLinkedList<E> extends MyAbstractList<E> {
 
     @Override
     public boolean contains(Object o) {
-        // TODO implement this operation (part B)
+        // done implement this operation (part B)
         if (first != null){
             Node<E> n = first;
             while (n!=null && !n.elem.equals(o)){
